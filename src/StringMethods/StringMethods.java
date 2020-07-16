@@ -1,5 +1,6 @@
 package StringMethods;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -32,13 +33,30 @@ public class StringMethods {
 
 	// Given Strings s1 and s2, return the longer String
 	public static String longerString(String s1, String s2) {
-		return null;
+		if(s1.length()>s2.length()) {
+		return s1;
+		}
+		else {
+			return s2;
+		}
 	}
 
 	
 	// if String s contains the word "underscores", change all of the spaces to underscores
 	public static String formatSpaces(String s) {
-		return null;
+		String s2 = s;
+		if(s.contains("underscores")) {
+			s2 = "";
+			for (int i = 0; i < s.length(); i++) {
+				if(s.charAt(i)==' ') {
+					s2 = s2+'_';
+				}
+				else {
+					s2 = s2+s.charAt(i);
+				}
+			}
+		}
+		return s2;
 	}
 
 	
@@ -46,18 +64,60 @@ public class StringMethods {
 	// You cannot assume there are no extra spaces around the name, but you can
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
-		return null;
+		s1 = s1.trim();
+		s2 = s2.trim();
+		s3 = s3.trim();
+		char[] c = new char[3];
+		for (int i = 0; i < s1.length(); i++) {
+			if(s1.charAt(i)==' ') {
+				c[0] = s1.charAt(i+1);
+			}
+		}
+		for (int i = 0; i < s2.length(); i++) {
+			if(s2.charAt(i)==' ') {
+				c[1] = s2.charAt(i+1);
+			}
+		}
+		for (int i = 0; i < s3.length(); i++) {
+			if(s3.charAt(i)==' ') {
+				c[2] = s3.charAt(i+1);
+			}
+		}
+		if(c[0]<c[1]&&c[0]<c[2]) {
+			return s1;
+		}
+		if(c[1]<c[0]&&c[1]<c[2]) {
+			return s2;
+		}
+		else {
+			return s3;
+		}
 	}
 	
 	
 	// Return the sum of all numerical digits in the String
 	public static int numeralSum(String s) {
-		return 0;
+		int total = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if(Character.isDigit(s.charAt(i))) {
+				total+=Character.getNumericValue(s.charAt(i));
+			}
+		}
+		return total;
 	}
 	
 	
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
+		String s1 = "";
+		for (int i = 0; i < s.length(); i++) {
+			if(s.contains(substring)) {
+			s1=s1+s-s.indexOf(substring)+substring.length(); //basically what I want to do, but need to redo it correctly
+			}
+			else {
+				return 0;
+			}
+		}
 		return 0;
 	}
 
